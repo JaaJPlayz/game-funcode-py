@@ -9,6 +9,7 @@ class Base(object):
         defense=0,
         level=1,
         alive=True,
+        items=[],
     ):
         self._name = name
         self._entity_type = entity_type
@@ -18,6 +19,7 @@ class Base(object):
         self._defense = defense
         self._level = level
         self._alive = alive
+        self._items = items
 
     @property
     def life(self):
@@ -113,8 +115,16 @@ class Base(object):
     def alive(self, value):
         self._alive = value
 
+    @property
+    def items(self):
+        return self._items
+
+    @items.setter
+    def items(self, value):
+        self._items = value
+
     def take_damage(self, damage):
-        self.life -= damage
+        self.life -= damage - self.defense
 
         if self.life < 0:
             self.life = 0
@@ -129,8 +139,9 @@ class Base(object):
             if self.life > 100:
                 self.life = 100
 
+
     def __str__(self):
-        return f"Name: {self.name}\nType: {self.entity_type}\nMana: {self.mana}\nLife: {self.life}\nAttack: {self.attack}\nDefense: {self.defense}\nLevel: {self.level}"
+        return f"Name: {self.name}\nType: {self.entity_type}\nMana: {self.mana}\nLife: {self.life}\nAttack: {self.attack}\nDefense: {self.defense}\nLevel: {self.level}\nAlive: {self.alive}\nItems: {self.items}"
 
     def __repr__(self):
         return self.__str__()

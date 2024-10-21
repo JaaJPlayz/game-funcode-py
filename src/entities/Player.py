@@ -12,6 +12,7 @@ class Player(Base):
         defense=0,
         level=1,
         alive=True,
+        items=[],
     ):
         super().__init__(
             name=name,
@@ -22,10 +23,5 @@ class Player(Base):
             defense=defense,
             level=level,
             alive=alive,
+            items=items,
         )
-
-    def __str__(self):
-        return f"Name: {self.name}\nType: {self.entity_type}\nMana: {self.mana}\nLife: {self.life}\nAttack: {self.attack}\nDefense: {self.defense}\nLevel: {self.level}\nAlive: {self.alive}"
-
-    def __repr__(self):
-        return self.__str__()

@@ -1,19 +1,22 @@
 from entities.Player import Player
 from utils.line import line
 
+def take_shield(entity):
+    entity.defense += 10
+    entity.items.append("shield")
 
 def main():
     player = Player("Hiago", "player", 100, 100, 10, 0, 1, True)
-    print(player.__repr__())
-    line(30)
-    player.take_damage(90)
-    print(player.__repr__())
-    line(30)
-    player.heal(23)
-    print(player.__repr__())
-    line(30)
 
+    line()
+    print(player)
+    line()
 
+    take_shield(player)
+
+    line()
+    print(player)
+    line()
 
 
 if __name__ == "__main__":
